@@ -1,0 +1,52 @@
+---
+title: "mixVMFs"
+author: "Tarek Zikry"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r read_data}
+library(movMF)
+#read in manifold approximation data
+df <- read.csv("spca_data.csv")
+big = as.matrix(subset(df, select=c(SPCA_1, SPCA_2, SPCA_3)))
+
+```
+
+```{r}
+set.seed(1453)
+
+vMFs<-lapply(1:20, function(K)
+  movMF(big, k = K,control=list(nruns= 20)))
+
+bic_list <- sapply(vMFs, BIC)
+```
+```{r}
+plot(seq(1:10), bic_list[1:10] / 10000, type = "b", pch = 19, 
+     col = "navy", xlab = "Number of components K", ylab = "BIC (10e4 scale)", main="BIC from Different Mixture Components")
+
+##Choose the number of mixing components
+```
+
+```{r}
+#set optimal number of clusters are based on previous chunk
+test = movMF(big, k = 5, control=list(nruns= 20))
+
+best = vMFs[[5]]
+best$alpha
+best$theta
+clustering <- predict(best)
+df$predicted_mix = clustering
+#now have cluster assignments from the VMF mixtures
+apply(coef(best)$theta, 1,function(x)
+  colnames(coef(best)$theta)[order(x, decreasing= T)[1:14]])
+write.csv(df, 'mixedSpheres.csv')
+
+```
+
+
+

@@ -19,10 +19,10 @@ To simulate data to test the effectiveness of JAREC, we simulate data along a hy
 Lastly, to investigate drivers of the change from manifold found to be different with JAREC, we carry out clustering along a hypersphere using a mixture of von-Mises Fisher distributions using the moVMF library in R. Code to do this is in the [mix_VMFs_jarec.Rmd](./mix_VMFs_jarec.Rmd), with code to reproduce the figures in the [vmf_plots_jarec.ipynb](./vmf_plots_jarec.ipynb).
 
 ## Dependencies 
-Data analysis was performed using Python () and R (). NumPy (), pandas (), SciPy (), scikit-learn (), AnnData (), sketchKH (), joblib (), and tqdm () Python libraries were used to perform statistical analyses. movMF () R packages were used to simulate von Mises-Fisher distributions. seaborn () and matplotlib () Python libraries were used for data visualization. 
+Data analysis was performed using Python () and R (). NumPy (), pandas (), SciPy (), scikit-learn (), AnnData (), sketchKH (), joblib (), and tqdm () Python libraries were used to perform statistical analyses. movMF () R packages were used to simulate von Mises-Fisher distributions. seaborn () and matplotlib () Python libraries were used for data visualization. Up to date implementations of SPCA in Python can be found at [https://github.com/purvislab/SingleCell_HyperSphere](https://github.com/purvislab/SingleCell_HyperSphere). 
 
 ## Data Access
-Up to date implementations of SPCA in Python can be found at [https://github.com/purvislab/SingleCell_HyperSphere](https://github.com/purvislab/SingleCell_HyperSphere). In this repo, we use single-cell data from ER+/HER2- breast tumor cells (T47D) treated with varying doses of palbociclib, a CDK4/6 inhibitor. T47D triplicate data under palbociclib can be found at [https://zenodo.org/records/10063003](https://zenodo.org/records/10063003), and the six-condition T47D data can found at [https://doi.org/10.5281/zenodo.13621367](https://doi.org/10.5281/zenodo.13621367). 
+For our example usages, we use single-cell data from ER+/HER2- breast tumor cells (T47D) treated with varying doses of palbociclib, a CDK4/6 inhibitor. T47D triplicate data under palbociclib can be found at [https://zenodo.org/records/10063003](https://zenodo.org/records/10063003), and the six-condition T47D data can found at [https://doi.org/10.5281/zenodo.13621367](https://doi.org/10.5281/zenodo.13621367). 
 
 ## License 
 This software is licensed under the [MIT license](https://opensource.org/licenses/MIT).

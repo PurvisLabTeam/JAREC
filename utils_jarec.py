@@ -420,7 +420,7 @@ def get_tuned_pval(d_metric_0, d_metric_1, gamma):
 def tuning_gamma(x_batch1, x_batch2, confidence_level):
     x_batch1 = pd.DataFrame(x_batch1)
     x_batch2 = pd.DataFrame(x_batch2)
-    d_null_tune, d_test_tune, ss_union_tune, ss_sep_tune = HypTestBootAll(x_batch1, x_batch2, B=1000, gamma =1, d = 2, multi=True)
+    d_null_tune, d_test_tune, ss_ratio = HypTestBootAll(x_batch1, x_batch2, B=1000, gamma =1, d = 2, multi=True)
     ttest = stats.ttest_ind(d_test_tune, d_null_tune, equal_var= False)
     dof = ttest.df
     test_stat = ttest.statistic
